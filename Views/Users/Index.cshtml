@@ -1,0 +1,32 @@
+@model List<kurs.Models.User>
+@{
+    ViewData["Title"] = "Пользователи";
+}
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Пользователи</h1> 
+<a href="Add">Добавить</a>
+<a href="PrintPdf">Распечатать в PDF</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Роль (id)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.Login</td>
+                <td>@user.Password</td>
+                <td>@user.Role.Name (@user.RoleId)</td>
+                <td><a href="Edit/@user.UserId">Посмотреть</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

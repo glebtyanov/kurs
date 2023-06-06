@@ -1,0 +1,46 @@
+@model kurs.Models.BookingViewModel
+@{
+    ViewData["Title"] = "Изменение бронирования";
+}
+@section Scripts
+  {
+     <partial name="_ValidationScriptsPartial" />
+  }
+  <head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Изменение бронирования</h1>
+<form method="post" action="Edit" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Id</label>
+        <input readonly type="text" class="form-control" asp-for="Booking.BookingId"/>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Тур</label>
+        <select asp-for="Booking.TourId">
+            @foreach(var tour in Model.Tours)
+            {
+            <option value="@tour.TourId">@tour.Name</option> 
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Клиент</label>
+        <select asp-for="Booking.ClientId">
+            @foreach(var client in Model.Clients)
+            {
+            <option value="@client.ClientId">@client.FirstName @client.LastName (@client.PhoneNumber)</option> 
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Дата бронирования</label>
+        <input type="date" class="form-control" asp-for="Booking.BookingDate"/>
+        <span asp-validation-for="Booking.BookingDate"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+    </form>
+    <form method="post" action="Delete" class="mt-5">
+    <input type="hidden" asp-for="Booking.BookingId" />
+    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Bookings">Удалить</button>
+</form>

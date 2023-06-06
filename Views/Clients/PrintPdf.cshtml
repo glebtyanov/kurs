@@ -1,0 +1,32 @@
+@model List<kurs.Models.Client>
+    @{
+        Layout = null;
+    }
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/kurs.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />     
+</head>
+
+<h1>Клиенты</h1> 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Номер телефона</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.FirstName</td>
+                <td>@client.LastName</td>
+                <td>@client.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

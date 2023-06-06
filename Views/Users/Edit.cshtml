@@ -1,0 +1,41 @@
+@model kurs.Models.User
+@{
+    ViewData["Title"] = "Изменение пользователя";
+}
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Изменение пользователя</h1>
+<form method="post" action="Edit" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Id</label>
+        <input readonly type="text" class="form-control" asp-for="UserId" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Логин</label>
+        <input type="text" class="form-control" asp-for="Login"/>
+        <span asp-validation-for="Login"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Пароль</label>
+        <input type="text" class="form-control" asp-for="Password"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Id роли</label>
+        <select>
+            <option value="1">Работник</option>
+            <option value="2">Менеджер</option>
+            <option value="3">Администратор</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+</form>
+    <form method="post" action="Delete" class="mt-5">
+    <input type="hidden" asp-for="UserId" />
+    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Users">Удалить</button>
+</form>

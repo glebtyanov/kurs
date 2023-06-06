@@ -1,0 +1,48 @@
+@model kurs.Models.Tour
+@{
+    ViewData["Title"] = "Изменение тура";
+}
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Изменение тура</h1>
+<form method="post" action="Edit" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Название</label>
+        <input readonly type="text" class="form-control" asp-for="TourId" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Название</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Описание</label>
+        <input type="text" class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Стоимость</label>
+        <input type="text" class="form-control" asp-for="Price" />
+        <span asp-validation-for="Price"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Дата начала</label>
+        <input type="date" class="form-control" asp-for="StartDate" />
+        <span asp-validation-for="StartDate"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Дата окончания</label>
+        <input type="date" class="form-control" asp-for="EndDate" />
+        <span asp-validation-for="EndDate"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+    </form>
+    <form method="post" action="Delete" class="mt-5">
+    <input type="hidden" asp-for="TourId" />
+    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Tours">Удалить</button>
+</form>

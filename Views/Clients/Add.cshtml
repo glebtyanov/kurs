@@ -1,0 +1,30 @@
+@model kurs.Models.Client
+@{
+    ViewData["Title"] = "Добавление клиента";
+}
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Добавление клиента</h1>
+<form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Имя</label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Фамилия</label>
+        <input type="text" class="form-control" asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Номер телефона</label>
+        <input type="text" class="form-control" asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

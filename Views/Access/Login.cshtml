@@ -1,0 +1,66 @@
+@model kurs.Models.LoginViewModel;
+@{
+    Layout = null;
+    ViewData["Title"] = "Логин";
+}
+@section Scripts
+    {
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/kurs.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+</head>
+
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
+                    <div class="card bg-dark text-white" style="border-radius: 1rem; background-color: #527A55 !important" >
+                        <div class="card-body p-5 text-center">
+                            <form asp-controller="Access" asp-action="Login" method="post">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+                                    <h2 class="fw-bold mb-2 text-uppercase">Вход</h2>
+                                    <p class="text-white-50 mb-5">Введите логин и пароль</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="typeEmailX">Логин</label>
+                                        <input type="text" id="typeEmailX" class="form-control form-control-lg"
+                                            asp-for="Login" />
+                                        <span asp-validation-for="Login"></span>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="typePasswordX">Пароль</label>
+                                        <input type="password" id="typePasswordX" class="form-control form-control-lg"
+                                            asp-for="Password" />
+                                        <span asp-validation-for="Password"></span>
+                                    </div>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Войти</button>
+                                    <div style="margin-top: 10px; font-size: 1.5em;">
+
+                                        @if (ViewData["ValidateMessage"] != null)
+                                        {
+                                            <label>@ViewData["ValidateMessage"]</label>
+                                        }
+                                    </div>
+
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

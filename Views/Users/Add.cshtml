@@ -1,0 +1,33 @@
+@model kurs.Models.User
+@{
+    ViewData["Title"] = "Добавление пользователя";
+}
+@section Scripts
+  {
+     <partial name="_ValidationScriptsPartial" />
+  }
+  <head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Добавление пользователя</h1>
+<form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Логин</label>
+        <input type="text" class="form-control" asp-for="Login"/>
+        <span asp-validation-for="Login"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Пароль</label>
+        <input type="text" class="form-control" asp-for="Password"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Роль</label>
+        <select asp-for="RoleId">
+            <option value="1">Работник</option>
+            <option value="2">Менеджер</option>
+            <option value="3">Администратор</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

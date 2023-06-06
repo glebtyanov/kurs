@@ -1,0 +1,31 @@
+@model List<kurs.Models.User>
+    @{
+        Layout = null;
+    }
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/kurs.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />     
+</head>
+<h1>Пользователи</h1> 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Роль </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Login</td>
+                <td>@user.Password</td>
+                <td>@user.Role.Name </td>
+            </tr>
+        }
+    </tbody>
+</table>

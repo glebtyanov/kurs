@@ -1,0 +1,30 @@
+@model List<kurs.Models.Booking>
+    @{
+        Layout = null;
+    }
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/kurs.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />     
+</head>
+<h1>Бронирования</h1> 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Тур </th>
+            <th>Клиент </th>
+            <th>Дата бронирования</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Tour.Name</td>
+                <td>@booking.Client.LastName @booking.Client.FirstName</td>
+                <td>@booking.BookingDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

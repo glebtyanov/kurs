@@ -1,0 +1,43 @@
+@model List<kurs.Models.Tour>
+@{
+    ViewData["Title"] = "Туры";
+}
+
+<h1>Туры</h1>
+@if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+{
+    <a href="Add">Добавить</a>
+}
+<a href="PrintPdf">Распечатать в PDF</a>
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head> 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Стоимость</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tour in Model)
+        {
+            <tr>
+                <td>@tour.TourId</td>
+                <td>@tour.Name</td>
+                <td>@tour.Description</td>
+                <td>@tour.Price</td>
+                <td>@tour.StartDate</td>
+                <td>@tour.EndDate</td>
+                @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                {
+                    <td><a href="Edit/@tour.TourId">Посмотреть</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

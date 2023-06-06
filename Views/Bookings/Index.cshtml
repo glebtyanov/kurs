@@ -1,0 +1,31 @@
+@model List<kurs.Models.Booking>
+@{
+    ViewData["Title"] = "Бронирования";
+}
+<head>
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />    
+</head>
+<h1>Бронирования</h1> <a href="Add">Добавить</a>
+<a href="PrintPdf">Распечатать в PDF</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Тур (id)</th>
+            <th>Клиент (id)</th>
+            <th>Дата бронирования</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingId</td>
+                <td>@booking.Tour.Name (@booking.TourId)</td>
+                <td>@booking.Client.LastName @booking.Client.FirstName (@booking.ClientId)</td>
+                <td>@booking.BookingDate</td>
+                <td><a href="Edit/@booking.BookingId">Посмотреть</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
